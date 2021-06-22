@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: events-deploy
+  name: queries-deploy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: events
+      app: queries
   template:
     metadata:
       labels:
-        app: events
+        app: queries
     spec:
       containers:
-        - name: events
-          image: rudyesteban/events
+        - name: queries
+          image: rudyesteban/queries
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: events-service
+  name: queries-service
 spec:
   selector:
-    app: events
+    app: queries
   ports:
-    - name: events
+    - name: queries
       protocol: TCP
-      port: 4005
-      targetPort: 4005
+      port: 4002
+      targetPort: 4002
